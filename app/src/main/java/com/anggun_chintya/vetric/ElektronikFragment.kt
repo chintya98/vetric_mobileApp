@@ -1,59 +1,79 @@
 package com.anggun_chintya.vetric
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.anggun_chintya.vetric.databinding.FragmentElektronikBinding
+import com.google.firebase.database.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ElektronikFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ElektronikFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var elektronikAdapter: RecyclerAdapter_Elektronik
+    private lateinit var binding: FragmentElektronikBinding
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_elektronik, container, false)
+        binding = FragmentElektronikBinding.inflate(layoutInflater)
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("elektronik")
+        getDataElektronik()
+
+        binding.btnAddElektronik.setOnClickListener {
+            val intent = Intent(activity, TambahElektronik::class.java)
+            startActivity(intent)
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ElektronikFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ElektronikFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun initRecyclerView() {
+        binding.rvElektronik.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            elektronikAdapter = RecyclerAdapter_Elektronik()
+            adapter = elektronikAdapter
+        }
+    }
+
+    private fun getDataElektronik() {
+        val valueEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val listDataElektronik = mutableListOf<DataElektronik>()
+
+                for (elektronikSnapshot in dataSnapshot.children) {
+                    val elektronik = elektronikSnapshot.getValue(DataElektronik::class.java)
+                    elektronik?.let {
+                        listDataElektronik.add(it)
+                    }
                 }
+
+                if (listDataElektronik.isEmpty()) {
+                    // Tampilkan pesan bahwa tidak ada data
+                    binding.tvNoData.visibility = View.VISIBLE
+                    Log.e("h1","tidak ada data")
+                } else {
+                    // Sembunyikan pesan jika ada data
+                    binding.tvNoData.visibility = View.GONE
+                    Log.e("h2","ada data")
+                }
+
+
+                initRecyclerView()
+                elektronikAdapter.submitList(listDataElektronik)
             }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e("ElektronikFragment", "Failed to read value.", databaseError.toException())
+            }
+        }
+
+        databaseReference.addValueEventListener(valueEventListener)
     }
 }

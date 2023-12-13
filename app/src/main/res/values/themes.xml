@@ -4,8 +4,13 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
+        <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="Theme.Vetric" parent="Base.Theme.Vetric" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/activeIndicator</item>
+    </style>
 
 </resources>

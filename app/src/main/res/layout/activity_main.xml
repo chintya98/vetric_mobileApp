@@ -25,6 +25,5 @@
         app:menu="@menu/bottom_nav"
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/bottom_nav_active_inactive"
-        />
-
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator" />
 </androidx.constraintlayout.widget.ConstraintLayout>
