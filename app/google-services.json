@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "177850435330",
+    "firebase_url": "https://vetric-9e9cd-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "vetric-9e9cd",
+    "storage_bucket": "vetric-9e9cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177850435330:android:4e849692722ab25667241b",
+        "android_client_info": {
+          "package_name": "com.anggun_chintya.vetric"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT2ja_DH7LMAJyplLjyEV302dX6cPlDtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
