@@ -1,10 +1,12 @@
-package com.anggun_chintya.vetric
+package com.anggun_chintya.vetric.Elektronik
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.anggun_chintya.vetric.R
 import com.anggun_chintya.vetric.databinding.TambahElektronikBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -16,7 +18,7 @@ class TambahElektronik : AppCompatActivity(){
         binding = TambahElektronikBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnSaveElektronik.setOnClickListener {
+        binding.tvTambah.setOnClickListener {
             // Mendapatkan nilai dari EditText
             val kategori = binding.etInKategori.text.toString()
             val nama = binding.etInNama.text.toString()
@@ -28,13 +30,21 @@ class TambahElektronik : AppCompatActivity(){
 
             simpanDataElektronik(kategori, nama, tipe, daya,jmlUnit, durasi, ulang)
         }
+
+
+        binding.ibBack.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     fun simpanDataElektronik(kategori:String, nama:String, tipe:String, daya:Double, jmlUnit:Int, durasi:Double, ulang:Int) {
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val databaseReference: DatabaseReference = database.reference
 
-        val dataElektronik = DataElektronik(kategori,nama,tipe,daya,jmlUnit,durasi,ulang)
+        val auth= FirebaseAuth.getInstance()
+        var userID = auth.currentUser?.uid
+
+        val dataElektronik = DataElektronik(kategori,nama,tipe,daya,jmlUnit,durasi,ulang,userID)
         val elektronikRef = databaseReference.child("elektronik")
 
         val progressbar = binding.progressbar
@@ -58,5 +68,10 @@ class TambahElektronik : AppCompatActivity(){
 
         // Ganti fragment yang sedang ditampilkan dengan ElektronikFragment
         fragmentManager?.beginTransaction()?.replace(R.id.frame_layout, elektronikFragment)?.commit()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

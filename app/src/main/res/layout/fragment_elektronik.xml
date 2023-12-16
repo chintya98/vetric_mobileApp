@@ -6,7 +6,7 @@
     android:paddingHorizontal="20dp"
     android:paddingTop="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ElektronikFragment">
+    tools:context=".Elektronik.ElektronikFragment">
 
     <TextView
         android:id="@+id/tv_Elektonik"
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add"
         android:background="@color/white"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 

@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="30dp"
     android:fitsSystemWindows="true">
 
     <TextView
         android:id="@+id/logo"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:layout_marginBottom="50dp"
@@ -23,75 +24,79 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputDaftar1"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:id="@+id/ti_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/white"
-        android:hint="@string/email"
+        android:hint="Nama"
         app:layout_constraintEnd_toEndOf="@id/logo"
         app:layout_constraintStart_toStartOf="@id/logo"
         app:layout_constraintTop_toBottomOf="@id/logo">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSimpanUsername"
+            android:id="@+id/et_nama"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             android:backgroundTint="@color/white"
             android:ems="15"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputDaftar2"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:id="@+id/ti_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         android:hint="@string/email"
-        app:layout_constraintEnd_toEndOf="@id/textInputDaftar1"
-        app:layout_constraintStart_toStartOf="@id/textInputDaftar1"
-        app:layout_constraintTop_toBottomOf="@id/textInputDaftar1">
+        app:layout_constraintEnd_toEndOf="@id/ti_nama"
+        app:layout_constraintStart_toStartOf="@id/ti_nama"
+        app:layout_constraintTop_toBottomOf="@id/ti_nama">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSimpanEmail"
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
+            android:inputType="textEmailAddress"
             android:ems="15"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputDaftar3"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:id="@+id/ti_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/white"
         android:hint="@string/password"
-        app:layout_constraintEnd_toEndOf="@id/textInputDaftar2"
-        app:layout_constraintStart_toStartOf="@id/textInputDaftar2"
-        app:layout_constraintTop_toBottomOf="@id/textInputDaftar2"
+        app:layout_constraintEnd_toEndOf="@id/ti_email"
+        app:layout_constraintStart_toStartOf="@id/ti_email"
+        app:layout_constraintTop_toBottomOf="@id/ti_email"
         app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSimpanPassword"
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="textPassword"
             android:backgroundTint="@color/white"
             android:ems="15"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputDaftar4"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:id="@+id/ti_konf_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/white"
         android:hint="@string/password2"
-        app:layout_constraintEnd_toEndOf="@id/textInputDaftar3"
-        app:layout_constraintStart_toStartOf="@id/textInputDaftar3"
-        app:layout_constraintTop_toBottomOf="@id/textInputDaftar3"
+        app:layout_constraintEnd_toEndOf="@id/ti_password"
+        app:layout_constraintStart_toStartOf="@id/ti_password"
+        app:layout_constraintTop_toBottomOf="@id/ti_password"
         app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSimpanPassword2"
+            android:id="@+id/et_konf_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="textPassword"
             android:backgroundTint="@color/white"
             android:ems="15"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -103,7 +108,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginLeft="10dp"
         android:gravity="left"
-        android:text="@string/textDaftar"
+        android:text="Sudah punya akun?"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@id/btnDaftar"
         app:layout_constraintTop_toTopOf="@id/btnDaftar"
@@ -116,7 +121,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="87dp"
         android:background="@android:color/transparent"
-        android:text="@string/daftar"
+        android:text="Masuk"
         android:textColor="@color/primary"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -135,8 +140,8 @@
         android:fontFamily="@font/lato"
         android:text="@string/daftar"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/textInputDaftar3"
-        app:layout_constraintTop_toTopOf="@id/textInputDaftar3"
-        app:layout_constraintStart_toStartOf="@id/textInputDaftar3"/>
+        app:layout_constraintEnd_toEndOf="@id/ti_password"
+        app:layout_constraintTop_toTopOf="@id/ti_password"
+        app:layout_constraintStart_toStartOf="@id/ti_password"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

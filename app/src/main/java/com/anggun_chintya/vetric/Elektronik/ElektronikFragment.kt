@@ -1,4 +1,4 @@
-package com.anggun_chintya.vetric
+package com.anggun_chintya.vetric.Elektronik
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anggun_chintya.vetric.databinding.FragmentElektronikBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class ElektronikFragment : Fragment() {
@@ -43,14 +44,20 @@ class ElektronikFragment : Fragment() {
     }
 
     private fun getDataElektronik() {
+
+        val auth= FirebaseAuth.getInstance()
+        var userID = auth.currentUser?.uid
+
         val valueEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val listDataElektronik = mutableListOf<DataElektronik>()
 
                 for (elektronikSnapshot in dataSnapshot.children) {
                     val elektronik = elektronikSnapshot.getValue(DataElektronik::class.java)
-                    elektronik?.let {
-                        listDataElektronik.add(it)
+                    if (elektronik?.userID == userID) {
+                        elektronik?.let {
+                            listDataElektronik.add(it)
+                        }
                     }
                 }
 
@@ -63,7 +70,6 @@ class ElektronikFragment : Fragment() {
                     binding.tvNoData.visibility = View.GONE
                     Log.e("h2","ada data")
                 }
-
 
                 initRecyclerView()
                 elektronikAdapter.submitList(listDataElektronik)
