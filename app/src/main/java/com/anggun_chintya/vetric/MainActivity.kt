@@ -3,6 +3,7 @@ package com.anggun_chintya.vetric
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.anggun_chintya.vetric.Elektronik.ElektronikFragment
 import com.anggun_chintya.vetric.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(){

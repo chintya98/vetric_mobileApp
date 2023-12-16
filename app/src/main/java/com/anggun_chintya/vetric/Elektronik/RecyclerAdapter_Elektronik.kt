@@ -1,6 +1,5 @@
-package com.anggun_chintya.vetric
+package com.anggun_chintya.vetric.Elektronik
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
