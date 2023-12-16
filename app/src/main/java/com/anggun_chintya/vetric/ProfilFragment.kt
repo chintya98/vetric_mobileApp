@@ -23,7 +23,8 @@ class ProfilFragment : Fragment() {
         binding = FragmentProfilBinding.inflate(layoutInflater)
         auth = FirebaseAuth.getInstance()
 
-        binding.tvTest.setText(auth.currentUser?.email)
+        binding.txEmail.setText(auth.currentUser?.email)
+
 
         binding.btnLogout.setOnClickListener {
             signOut()

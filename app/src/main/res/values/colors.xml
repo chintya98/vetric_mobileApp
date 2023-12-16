@@ -10,6 +10,7 @@
     <color name="red">#db1515</color>
     <color name="black25">#b8b8b8</color>
     <color name="activeIndicator">#CBCBCD</color>
+    <color name="grey">#F5F5F5</color>
 
 <!--    Text-->
     <color name="dark_gray">#263238</color>
