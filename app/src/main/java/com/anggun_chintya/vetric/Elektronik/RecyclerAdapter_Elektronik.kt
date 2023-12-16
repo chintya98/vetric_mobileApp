@@ -1,11 +1,14 @@
 package com.anggun_chintya.vetric.Elektronik
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.anggun_chintya.vetric.databinding.ItemElektronikBinding
+import com.google.android.material.card.MaterialCardView
 
 class RecyclerAdapter_Elektronik : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items : List<DataElektronik> = ArrayList()
@@ -22,6 +25,9 @@ class RecyclerAdapter_Elektronik : RecyclerView.Adapter<RecyclerView.ViewHolder>
         when(holder){
             is ElektronikViewHolder -> {
                 holder.bind(items.get(position))
+                holder.card.setOnClickListener {
+                    holder.click(items.get(position))
+                }
             }
         }
     }
@@ -38,6 +44,8 @@ class RecyclerAdapter_Elektronik : RecyclerView.Adapter<RecyclerView.ViewHolder>
         val daya : TextView = binding.tvDaya
         val estBiaya : TextView = binding.tvEstBiaya
 
+        var card : MaterialCardView = binding.itemElec
+
         fun bind (dataElektronik: DataElektronik){
             kategori.text = dataElektronik.kategori
             tipe.text = dataElektronik.tipe
@@ -46,6 +54,21 @@ class RecyclerAdapter_Elektronik : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             val biaya = dataElektronik.durasi * dataElektronik.jmlUnit * dataElektronik.daya * 1352
             estBiaya.text = biaya.toString()
+        }
+
+        fun click(get: DataElektronik){
+            Toast.makeText(itemView.context,"kamu memilih : ${get.nama}",Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(itemView.context, EditElektronik::class.java)
+            intent.putExtra("id",get.id)
+            intent.putExtra("kategori",get.kategori)
+            intent.putExtra("nama",get.nama)
+            intent.putExtra("tipe",get.tipe)
+            intent.putExtra("daya",get.daya.toString())
+            intent.putExtra("jmlUnit",get.jmlUnit.toString())
+            intent.putExtra("durasi",get.durasi.toString())
+            intent.putExtra("ulang",get.ulang.toString())
+            itemView.context.startActivity(intent)
         }
     }
 }
