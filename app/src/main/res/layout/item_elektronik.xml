@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_elec"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="20dp"
     app:contentPaddingBottom="10dp"
+    android:focusable="true"
     app:cardElevation="0.5dp"
     android:backgroundTint="@color/light_gray">
 
@@ -43,6 +45,7 @@
             android:text="Pendingin Udara"
             android:fontFamily="@font/lato"
             android:textSize="16sp"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginTop="12dp"
             android:layout_marginLeft="10dp"
@@ -81,6 +84,7 @@
             android:fontFamily="@font/lato"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginRight="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

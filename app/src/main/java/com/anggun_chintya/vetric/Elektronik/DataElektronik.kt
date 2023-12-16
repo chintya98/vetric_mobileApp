@@ -1,6 +1,7 @@
 package com.anggun_chintya.vetric.Elektronik
 
 data class DataElektronik(
+    var id: String,
     var kategori: String,
     var nama: String,
     var tipe: String,
@@ -11,5 +12,5 @@ data class DataElektronik(
     var userID: String?
 
 ){
-    constructor() : this("", "","",0.0,0,0.0,0,"")
+    constructor() : this("","", "","",0.0,0,0.0,0,"")
 }

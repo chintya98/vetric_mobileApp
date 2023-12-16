@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="20dp"
-    android:paddingTop="20dp"
+    android:paddingVertical="20dp"
     tools:context=".Elektronik.EditElektronik">
 
     <TextView
@@ -20,187 +20,303 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <ImageView
-        android:id="@+id/ic_elec"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/ac"
-        app:tint="@color/primary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_editElektonik"/>
-
     <TextView
-        android:id="@+id/tv_subsec1"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_edit"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Spesifikasi"
+        android:text="Simpan"
         android:fontFamily="@font/lato"
-        android:textColor="@color/gray"
-        android:textSize="14sp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ic_elec"/>
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <LinearLayout
-        android:id="@+id/layout_spesifikasi"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_subsec1"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/background_form"
-        android:padding="10dp">
+        app:layout_constraintTop_toBottomOf="@+id/tv_editElektonik"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tv_inKategori"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Kategori"
-            android:fontFamily="@font/lato"
-            android:textSize="14sp"/>
+            android:layout_height="match_parent"
+            android:paddingVertical="30dp">
 
-        <EditText
-            android:id="@+id/et_inKategori"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Pilih Kategori"
-            android:fontFamily="@font/lato"
-            android:textSize="16sp"
-            android:inputType="text"/>
+            <ImageView
+                android:id="@+id/ic_elec"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ac"
+                app:tint="@color/primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:id="@+id/tv_inNama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Nama"
-            android:fontFamily="@font/lato"
-            android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_subsec1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spesifikasi"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ic_elec"/>
 
-        <EditText
-            android:id="@+id/et_inNama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nama Elektronik"
-            android:fontFamily="@font/lato"
-            android:textSize="16sp"
-            android:inputType="text"/>
+            <LinearLayout
+                android:id="@+id/layout_spesifikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_subsec1"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/background_form"
+                android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tv_inTipe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Tipe"
-            android:fontFamily="@font/lato"
-            android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/tv_edKategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
 
-        <EditText
-            android:id="@+id/et_inTipe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tipe"
-            android:fontFamily="@font/lato"
-            android:textSize="16sp"
-            android:inputType="text"/>
+                <EditText
+                    android:id="@+id/et_edKategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pilih Kategori"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
 
-        <TextView
-            android:id="@+id/tv_inDaya"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Daya (Watt)"
-            android:fontFamily="@font/lato"
-            android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/tv_edNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Nama"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
 
-        <EditText
-            android:id="@+id/et_inDaya"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="0"
-            android:fontFamily="@font/lato"
-            android:textSize="16sp"
-            android:inputType="number"/>
+                <EditText
+                    android:id="@+id/et_edNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Elektronik"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="text"/>
 
-        <TextView
-            android:id="@+id/tv_inUnit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Jumlah Unit"
-            android:fontFamily="@font/lato"
-            android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/tv_edTipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Tipe"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
 
-        <EditText
-            android:id="@+id/et_inUnit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="0"
-            android:fontFamily="@font/lato"
-            android:textSize="16sp"
-            android:inputType="number"/>
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/et_edTipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tipe"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"/>
 
-    <TextView
-        android:id="@+id/tv_subsec2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Informasi Waktu"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/gray"
-        android:textSize="14sp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_spesifikasi"/>
+                <TextView
+                    android:id="@+id/tv_edDaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Daya (Watt)"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
 
-    <LinearLayout
-        android:id="@+id/layout_infoWaktu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_subsec2"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/background_form"
-        android:padding="10dp">
+                <EditText
+                    android:id="@+id/et_edDaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="number"/>
 
-        <TextView
-            android:id="@+id/tv_inDurasi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Durasi"
-            android:fontFamily="@font/lato"
-            android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/tv_edUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Jumlah Unit"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
 
-        <EditText
-            android:id="@+id/et_inDurasi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Jam per Hari"
-            android:fontFamily="@font/lato"
-            android:textSize="16sp"
-            android:inputType="number"/>
+                <EditText
+                    android:id="@+id/et_edUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="number"/>
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_inUlang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Ulang"
-            android:fontFamily="@font/lato"
-            android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_subsec2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informasi Waktu"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_spesifikasi"/>
 
-        <EditText
-            android:id="@+id/et_inUlang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Setiap hari?"
-            android:fontFamily="@font/lato"
-            android:textSize="16sp"
-            android:inputType="number"/>
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_infoWaktu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_subsec2"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/background_form"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv_edDurasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Durasi"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
+
+                <EditText
+                    android:id="@+id/et_edDurasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Jam per Hari"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="number"/>
+
+                <TextView
+                    android:id="@+id/tv_edUlang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Ulang"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
+
+                <EditText
+                    android:id="@+id/et_edUlang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Setiap hari?"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_subsec3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perkiraan Per Bulan"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_infoWaktu"/>
+
+            <LinearLayout
+                android:id="@+id/layout_perkiraan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_subsec3"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/background_form"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tv_daya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Penggunaan Daya"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
+
+                <EditText
+                    android:id="@+id/et_daya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="none"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textColor="@color/gray"/>
+
+                <TextView
+                    android:id="@+id/tv_biaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Biaya"
+                    android:fontFamily="@font/lato"
+                    android:textSize="14sp"/>
+
+                <EditText
+                    android:id="@+id/et_biaya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:inputType="none"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:textColor="@color/gray"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/hapus_elec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/layout_perkiraan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Hapus Elektronik Ini"
+                android:fontFamily="@font/lato"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

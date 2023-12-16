@@ -3,6 +3,7 @@ package com.anggun_chintya.vetric
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.anggun_chintya.vetric.Catatan.CatatanFragment
 import com.anggun_chintya.vetric.Elektronik.ElektronikFragment
 import com.anggun_chintya.vetric.databinding.ActivityMainBinding
 
@@ -16,6 +17,12 @@ class MainActivity : AppCompatActivity(){
 
         if (savedInstanceState == null) {
             replaceFragment(BerandaFragment())
+        }
+
+        val openFragment = intent.getStringExtra("openFragment")
+        if (openFragment == "ElektronikFragment") {
+            replaceFragment(ElektronikFragment())
+            binding.bottomNav.menu.findItem(R.id.elektronik).isChecked=true
         }
 
         binding.bottomNav.setOnItemSelectedListener {

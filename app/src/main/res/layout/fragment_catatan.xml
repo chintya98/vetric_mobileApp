@@ -3,16 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BerandaFragment">
 
     <TextView
+        android:id="@+id/tv_Catatan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Halaman Catatan"
+        android:text="Catatan"
+        android:fontFamily="@font/lato"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/btn_addCatatan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:background="@color/white"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_catatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_Catatan"/>
+
+    <ImageView
+        android:id="@+id/noData"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:src="@drawable/no_data"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

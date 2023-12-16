@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Catatan.TambahCatatanFragment">
+
+    <TextView
+        android:id="@+id/tv_edJudul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Judul Catatan"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_edJudul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/tv_edTgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Tanggal Pengeluaran"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_edTgl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/tv_edBiaya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Biaya Pengeluaran"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_edBiaya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:inputType="number"/>
+
+</LinearLayout>

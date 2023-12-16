@@ -63,11 +63,11 @@ class ElektronikFragment : Fragment() {
 
                 if (listDataElektronik.isEmpty()) {
                     // Tampilkan pesan bahwa tidak ada data
-                    binding.tvNoData.visibility = View.VISIBLE
+                    binding.noData.visibility = View.VISIBLE
                     Log.e("h1","tidak ada data")
                 } else {
                     // Sembunyikan pesan jika ada data
-                    binding.tvNoData.visibility = View.GONE
+                    binding.noData.visibility = View.GONE
                     Log.e("h2","ada data")
                 }
 

@@ -81,7 +81,9 @@
             android:hint="Pilih Kategori"
             android:fontFamily="@font/lato"
             android:textSize="16sp"
-            android:inputType="text"/>
+            android:inputType="none"
+            android:clickable="false"
+            android:focusableInTouchMode="false"/>
 
         <TextView
             android:id="@+id/tv_inNama"
@@ -117,7 +119,9 @@
             android:hint="Tipe"
             android:fontFamily="@font/lato"
             android:textSize="16sp"
-            android:inputType="text"/>
+            android:inputType="none"
+            android:clickable="false"
+            android:focusableInTouchMode="false"/>
 
         <TextView
             android:id="@+id/tv_inDaya"
