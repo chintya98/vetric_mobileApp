@@ -15,4 +15,8 @@
     <string name="second_fragment_label">hello</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    rekomendasi-->
+    <string name="card1">Kurangi Penggunaan Lampu</string>
+    <string name="card1detil">Alihkan penggunaan lampu disiang hari dan biarkan cahaya alami masuk. Ini dapat mengurangi penggunaan lampu dari konsumsi daya</string>
 </resources>
