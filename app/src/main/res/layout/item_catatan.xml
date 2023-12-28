@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_catatan"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,44 +17,31 @@
         android:paddingVertical="12dp"
         android:paddingHorizontal="20dp">
 
-        <TextView
-            android:id="@+id/tv_tgl"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="27"
-            android:textColor="@color/primary"
-            android:fontFamily="@font/lato"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_bulan"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:text="SEP"
-            android:textColor="@color/primary"
             android:fontFamily="@font/lato"
-            android:textStyle="bold"
-            android:textSize="18sp"
+            android:text="SEP"
             android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@id/tv_tgl"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:textColor="@color/primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="37dp" />
 
         <TextView
             android:id="@+id/tv_judulCat"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Isi Ulang Token Listrik"
             android:fontFamily="@font/lato"
+            android:text="Isi Ulang Token Listrik"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/tv_tgl"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="80dp" />
 
         <TextView
             android:id="@+id/tv_biayaPengeluaran"

@@ -44,7 +44,7 @@ class RecyclerAdapter_Catatan : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         val judul : TextView = binding.tvJudulCat
         val biaya : TextView = binding.tvBiayaPengeluaran
         val bulan : TextView = binding.tvBulan
-        val tanggal : TextView = binding.tvTgl
+//        val tanggal : TextView = binding.tvTgl
 
         var card : MaterialCardView = binding.itemCatatan
 
@@ -59,7 +59,7 @@ class RecyclerAdapter_Catatan : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
             val formattedDate = dateFormat.format(dataCatatan.tanggal)
 
             bulan.text = formattedMonth.toString()
-            tanggal.text = formattedDate.toString()
+//            tanggal.text = formattedDate.toString()
 
         }
 
