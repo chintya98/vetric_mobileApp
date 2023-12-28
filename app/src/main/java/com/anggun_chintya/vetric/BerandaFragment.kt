@@ -46,8 +46,6 @@ class BerandaFragment : Fragment() {
             override fun onFailure(call: Call<WeatherApp>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
-
     }
 }

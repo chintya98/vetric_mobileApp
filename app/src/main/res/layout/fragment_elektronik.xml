@@ -31,12 +31,82 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_perkiraan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_Elektonik"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:contentPadding="15dp"
+        android:layout_marginTop="20dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/tv_biayaListrik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perkiraan Biaya Listrik"
+                android:fontFamily="@font/lato"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_nilaiBiaya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Rp300.000/bulan"
+                android:layout_below="@id/tv_biayaListrik"
+                android:textStyle="bold"
+                android:fontFamily="@font/lato"
+                android:textSize="16sp"/>
+
+            <View
+                android:id="@+id/garis"
+                android:layout_width="2dp"
+                android:layout_height="40dp"
+                android:background="@color/gray"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/tv_biayaListrik"/>
+
+            <TextView
+                android:id="@+id/tv_konsumsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Konsumsi Daya Anda"
+                android:textSize="14sp"
+                android:fontFamily="@font/lato"
+                android:layout_toRightOf="@id/garis"/>
+
+            <TextView
+                android:id="@+id/tv_nilaikonsumsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Rp300.000/bulan"
+                android:layout_below="@id/tv_konsumsi"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/garis"
+                android:textStyle="bold"
+                android:fontFamily="@font/lato"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_elektronik"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_Elektonik"/>
+        app:layout_constraintTop_toBottomOf="@id/card_perkiraan"/>
 
     <ImageView
         android:id="@+id/noData"

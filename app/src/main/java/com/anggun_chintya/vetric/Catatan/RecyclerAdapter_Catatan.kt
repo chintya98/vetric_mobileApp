@@ -91,7 +91,6 @@ class RecyclerAdapter_Catatan : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
             dialog.setPositiveButton("Simpan") { dialog, _ ->
 
-
                 }
                 .setNegativeButton("Batal") { dialog, _ ->
                     dialog.dismiss()
