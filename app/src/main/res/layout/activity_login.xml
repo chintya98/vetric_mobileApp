@@ -9,103 +9,114 @@
     android:fitsSystemWindows="true"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:text="@string/logo"
-        android:textColor="@color/primary"
-        android:fontFamily="@font/gfs_neohellenic"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_login_email"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/white"
-        android:hint="@string/email"
-        app:layout_constraintEnd_toEndOf="@id/logo"
-        app:layout_constraintStart_toStartOf="@id/logo"
-        app:layout_constraintTop_toBottomOf="@id/logo">
+        android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_login_email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
-                android:backgroundTint="@color/white"
-                android:ems="15"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_login_password"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="@color/white"
-            android:hint="@string/password"
-            app:layout_constraintEnd_toEndOf="@id/ti_login_email"
-            app:layout_constraintStart_toStartOf="@id/ti_login_email"
-            app:layout_constraintTop_toBottomOf="@id/ti_login_email"
-            app:passwordToggleEnabled="true">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_login_password"
+            <TextView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:layout_marginBottom="50dp"
+                android:gravity="center"
+                android:text="@string/logo"
+                android:textColor="@color/primary"
+                android:fontFamily="@font/gfs_neohellenic"
+                android:textSize="50sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_login_email"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textPassword"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:backgroundTint="@color/white"
-                android:ems="15"/>
-    </com.google.android.material.textfield.TextInputLayout>
+                android:hint="@string/email"
+                app:layout_constraintEnd_toEndOf="@id/logo"
+                app:layout_constraintStart_toStartOf="@id/logo"
+                app:layout_constraintTop_toBottomOf="@id/logo">
 
-    <Button
-        android:id="@+id/btnMasuk"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/primary"
-        android:text="@string/masuk"
-        android:textStyle="bold"
-        android:fontFamily="@font/lato"
-        app:layout_constraintEnd_toEndOf="@id/ti_login_password"
-        app:layout_constraintStart_toStartOf="@id/ti_login_password"
-        app:layout_constraintTop_toBottomOf="@id/ti_login_password"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_login_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:backgroundTint="@color/white"
+                    android:ems="15"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textdaftar"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="10dp"
-        android:gravity="left"
-        android:text="@string/textDaftar"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
-        app:layout_constraintTop_toTopOf="@id/btnMasuk"
-        app:layout_constraintStart_toStartOf="@id/btnMasuk"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/white"
+                android:hint="@string/password"
+                app:layout_constraintEnd_toEndOf="@id/ti_login_email"
+                app:layout_constraintStart_toStartOf="@id/ti_login_email"
+                app:layout_constraintTop_toBottomOf="@id/ti_login_email"
+                app:passwordToggleEnabled="true">
 
-    <Button
-        android:id="@+id/btnTextDaftar"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="87dp"
-        android:background="@android:color/transparent"
-        android:text="@string/daftar"
-        android:textColor="@color/primary"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/btnMasuk"
-        app:layout_constraintHorizontal_bias="0.72"
-        app:layout_constraintStart_toStartOf="@id/btnMasuk"
-        app:layout_constraintTop_toTopOf="@id/btnMasuk"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:backgroundTint="@color/white"
+                    android:ems="15"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/btnMasuk"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/masuk"
+                android:textStyle="bold"
+                android:fontFamily="@font/lato"
+                app:layout_constraintEnd_toEndOf="@id/ti_login_password"
+                app:layout_constraintStart_toStartOf="@id/ti_login_password"
+                app:layout_constraintTop_toBottomOf="@id/ti_login_password"/>
+
+            <TextView
+                android:id="@+id/textdaftar"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="left"
+                android:text="@string/textDaftar"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+                app:layout_constraintTop_toTopOf="@id/btnMasuk"
+                app:layout_constraintStart_toStartOf="@id/btnMasuk"/>
+
+            <Button
+                android:id="@+id/btnTextDaftar"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="87dp"
+                android:background="@android:color/transparent"
+                android:text="@string/daftar"
+                android:textColor="@color/primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/btnMasuk"
+                app:layout_constraintHorizontal_bias="0.72"
+                app:layout_constraintStart_toStartOf="@id/btnMasuk"
+                app:layout_constraintTop_toTopOf="@id/btnMasuk"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

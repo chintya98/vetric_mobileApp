@@ -47,9 +47,7 @@ class CatatanFragment : Fragment() {
     }
 
     private fun formTambah(){
-
         customView = TambahCatatanBinding.inflate(layoutInflater)
-
         customView.etInTgl.setOnClickListener {
             tampilkanDatePicker()
         }
@@ -73,9 +71,7 @@ class CatatanFragment : Fragment() {
                 dialog.dismiss()
             }
             .create()
-
         dialog.show()
-
     }
 
     private fun initRecyclerView() {
