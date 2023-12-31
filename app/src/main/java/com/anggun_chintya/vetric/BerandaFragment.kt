@@ -7,15 +7,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.anggun_chintya.vetric.APIWeather.ApiService
 import com.anggun_chintya.vetric.APIWeather.RetrofitClient
+import com.anggun_chintya.vetric.Catatan.RecyclerAdapter_Catatan
 import com.anggun_chintya.vetric.DataWeather.Weather
 import com.anggun_chintya.vetric.DataWeather.WeatherApp
 import com.anggun_chintya.vetric.Elektronik.DataElektronik
+import com.anggun_chintya.vetric.Elektronik.RecyclerAdapter_Elektronik
 import com.anggun_chintya.vetric.ModelML.APIModel
 import com.anggun_chintya.vetric.ModelML.FeaturesModel
 import com.anggun_chintya.vetric.ModelML.RetrofitModel
 import com.anggun_chintya.vetric.ModelML.TargetModel
+import com.anggun_chintya.vetric.Rekomendasi.DataRekomendasi
+import com.anggun_chintya.vetric.Rekomendasi.RecyclerAdapter_Rekomendasi
 import com.anggun_chintya.vetric.databinding.DetailPrediksiMlBinding
 import com.anggun_chintya.vetric.databinding.FragmentBerandaBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -40,6 +45,8 @@ class BerandaFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var detailPrediksi : DetailPrediksiMlBinding
 
+    private lateinit var rekomendasiAdapter: RecyclerAdapter_Rekomendasi
+
     private var suhu=0.0
     private var curahHujan=276.0
     private var sunshine=0.0
@@ -61,6 +68,8 @@ class BerandaFragment : Fragment() {
         binding.cardKonsumsiDayaCuaca.setOnClickListener {
             tampilDetailPrediksi()
         }
+
+        getDataRekomendasi()
 
         return binding.root
     }
@@ -231,5 +240,39 @@ class BerandaFragment : Fragment() {
             // Jangan lupa untuk memanggil dismiss jika ingin menutup dialog secara manual
             // dialog.dismiss()
         }
+    }
+
+    private fun initRecyclerView() {
+        binding.rvCatatan.apply {
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+            rekomendasiAdapter = RecyclerAdapter_Rekomendasi()
+            adapter = rekomendasiAdapter
+        }
+    }
+
+    private fun getDataRekomendasi(){
+        databaseReference = FirebaseDatabase.getInstance().getReference("rekomendasi")
+        val valueEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val listDataRekomendasi = mutableListOf<DataRekomendasi>()
+
+                for (rekomendasiSnapshot in dataSnapshot.children) {
+                    val rekomendasi = rekomendasiSnapshot.getValue(DataRekomendasi::class.java)
+
+                    if (rekomendasi != null) {
+                        listDataRekomendasi.add(rekomendasi)
+                    }
+                }
+
+                initRecyclerView()
+                rekomendasiAdapter.submitList(listDataRekomendasi)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e("Rekomendasi", "Failed to read value.", databaseError.toException())
+            }
+        }
+
+        databaseReference.addValueEventListener(valueEventListener)
     }
 }
