@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prediksi Daya Listrik Bulanan \nBerdasarkan Cuaca"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:textSize="18sp"
+        android:fontFamily="@font/lato" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Secara default, prediksi dilakukan berdasarkan cuaca di Kota Pekanbaru"
+        android:textStyle="italic"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        android:fontFamily="@font/lato"/>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/primary"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/tv_inSuhu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Suhu Udara (°C)"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_inSuhu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/tv_inCurahHujan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Curah Hujan (mm)"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_inCurahHujan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/tv_inSunshine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Lama Sinar Matahari (jam)"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_inSunshine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_inKelembaban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Kelembaban"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_inKelembaban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_hasilPrediksi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Prediksi Daya Listrik"
+        android:fontFamily="@font/lato"
+        android:textSize="14sp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/et_hasilPrediksi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:inputType="number"/>
+
+</LinearLayout>
