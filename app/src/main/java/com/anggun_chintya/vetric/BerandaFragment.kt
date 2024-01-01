@@ -175,11 +175,9 @@ class BerandaFragment : Fragment() {
 
     private fun prediksiDaya_wCuaca(curahHujan:Double,suhu:Double,sunshine:Double,kelembaban:Int){
         val apiService = RetrofitModel.retrofit.create(APIModel::class.java)
-        Log.e("hasil","disini0")
 
         val inputData = FeaturesModel(curahHujan,suhu,sunshine,kelembaban)
         val call = apiService.getPredict(inputData)
-        Log.e("hasil","disini2")
 
         call.enqueue(object : Callback<TargetModel> {
             override fun onResponse(call: Call<TargetModel>, response: Response<TargetModel>) {
@@ -189,13 +187,9 @@ class BerandaFragment : Fragment() {
                     Log.e("hasil",hasilPrediksi.toString())
 
                     var strPrediksi = decimalFormat.format(hasilPrediksi)
-                    Log.e("hasil di card",strPrediksi)
-                    Log.e("hasil di card",hasilPrediksi.toString())
                     binding.vWKonsumsiDaya.setText(strPrediksi)
 
-                } else {
-                    Log.e("hasil","disini3")
-                }
+                } else { }
             }
 
             override fun onFailure(call: Call<TargetModel>, t: Throwable) {
