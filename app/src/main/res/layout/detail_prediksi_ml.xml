@@ -79,8 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:textSize="16sp"
-        android:inputType="number"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_inKelembaban"
@@ -96,8 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:textSize="16sp"
-        android:inputType="number"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_hasilPrediksi"
@@ -115,7 +113,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:textSize="16sp"
-        android:inputType="number"/>
+        android:textSize="16sp" />
 
 </LinearLayout>
