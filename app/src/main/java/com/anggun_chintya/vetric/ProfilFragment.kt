@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.anggun_chintya.vetric.Elektronik.DataTipeElektronik
+import com.anggun_chintya.vetric.databinding.FragmentBerandaBinding
 import com.anggun_chintya.vetric.databinding.FragmentElektronikBinding
 import com.anggun_chintya.vetric.databinding.FragmentProfilBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

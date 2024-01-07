@@ -44,6 +44,7 @@ class BerandaFragment : Fragment() {
     private lateinit var binding: FragmentBerandaBinding
     private lateinit var databaseReference: DatabaseReference
     private lateinit var detailPrediksi : DetailPrediksiMlBinding
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var rekomendasiAdapter: RecyclerAdapter_Rekomendasi
 
@@ -62,6 +63,7 @@ class BerandaFragment : Fragment() {
     ): View? {
         binding = FragmentBerandaBinding.inflate(layoutInflater)
 
+        getNamaUser()
         fetchWeatherData()
         tampilKalkulasi()
         prediksiDaya_wCuaca(curahHujan, suhu, sunshine, kelembaban)
@@ -274,5 +276,30 @@ class BerandaFragment : Fragment() {
         }
 
         databaseReference.addValueEventListener(valueEventListener)
+    }
+
+    private fun getNamaUser(){
+        auth = FirebaseAuth.getInstance()
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val userRef: DatabaseReference = database.getReference("users").child(auth.currentUser!!.uid)
+
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Mendapatkan data dari dataSnapshot
+                if (dataSnapshot.exists()) {
+                    val nama = dataSnapshot.child("nama").getValue(String::class.java)
+
+                    binding.tvHiUser.setText("Hi, " + nama + "!")
+                } else {
+                    // Data dengan ID tertentu tidak ditemukan
+                    println("Data dengan ID $id tidak ditemukan.")
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Penanganan kesalahan (jika ada)
+                println("Gagal mengambil data: ${databaseError.message}")
+            }
+        })
     }
 }
