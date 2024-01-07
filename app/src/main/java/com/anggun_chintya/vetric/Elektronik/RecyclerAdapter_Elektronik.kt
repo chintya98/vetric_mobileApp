@@ -7,8 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.anggun_chintya.vetric.R
 import com.anggun_chintya.vetric.databinding.ItemElektronikBinding
 import com.google.android.material.card.MaterialCardView
+import java.text.DecimalFormat
 
 class RecyclerAdapter_Elektronik : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items : List<DataElektronik> = ArrayList()
@@ -47,13 +49,20 @@ class RecyclerAdapter_Elektronik : RecyclerView.Adapter<RecyclerView.ViewHolder>
         var card : MaterialCardView = binding.itemElec
 
         fun bind (dataElektronik: DataElektronik){
+            val decimalFormat = DecimalFormat("#,##0.00")
+
             kategori.text = dataElektronik.kategori
             tipe.text = dataElektronik.tipe
             jmlUnit.text = dataElektronik.jmlUnit.toString()
-            daya.text = dataElektronik.daya.toString()
 
-            val biaya = dataElektronik.durasi * dataElektronik.jmlUnit * dataElektronik.daya * 1352
-            estBiaya.text = biaya.toString()
+            val num_daya = (dataElektronik.durasi * dataElektronik.jmlUnit * dataElektronik.daya *dataElektronik.ulang*4)/1000
+            daya.text = decimalFormat.format(num_daya)+ " kWh/bulan"
+
+            val biaya = (dataElektronik.durasi * dataElektronik.jmlUnit * dataElektronik.daya *dataElektronik.ulang*4)/1000 * 1352
+            estBiaya.text = decimalFormat.format(biaya)
+
+            val kategoriImageResId = getKategoriImageResId(dataElektronik.kategori)
+            icon.setImageResource(kategoriImageResId)
         }
 
         fun click(get: DataElektronik){
@@ -69,6 +78,18 @@ class RecyclerAdapter_Elektronik : RecyclerView.Adapter<RecyclerView.ViewHolder>
             intent.putExtra("durasi",get.durasi.toString())
             intent.putExtra("ulang",get.ulang.toString())
             itemView.context.startActivity(intent)
+        }
+
+        private fun getKategoriImageResId(kategori: String): Int {
+            return when (kategori) {
+                "Pendingin Udara" -> R.drawable.ac
+                "Kulkas" -> R.drawable.kulkas
+                "Televisi" -> R.drawable.tv
+                "Komputer" -> R.drawable.computer
+                "Penanak Nasi" -> R.drawable.penanaknasi
+                "Lampu" -> R.drawable.lampu
+                else -> R.drawable.ic_elec // Gambar default jika kategori tidak dikenali
+            }
         }
     }
 }

@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -67,7 +68,7 @@
                             android:layout_below="@id/tv1"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/lato"
-                            android:text="Rp 300000/bulan"
+                            android:text="Rp 00.0000/bulan"
                             android:textColor="@color/white"
                             android:textSize="22sp"
                             android:textStyle="bold" />
@@ -131,7 +132,7 @@
                         android:id="@+id/v_my_konsumsi_daya"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2.1"
+                        android:text="0.0"
                         android:fontFamily="@font/lato"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -185,7 +186,7 @@
                         android:id="@+id/v_w_konsumsi_daya"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="500.8"
+                        android:text="000.0"
                         android:fontFamily="@font/lato"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -236,7 +237,7 @@
                         android:id="@+id/v_p_konsumsi_daya"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0.389"
+                        android:text="0.00"
                         android:textSize="18sp"
                         android:fontFamily="@font/lato"
                         android:textStyle="bold"
@@ -327,7 +328,7 @@
                         android:id="@+id/tv_datetime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Minggu, 22 Oktober 2023"
+                        android:text="Minggu, 01 Januari 2000"
                         android:fontFamily="@font/lato"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -347,7 +348,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="33 C"
+                        android:text="0 C"
                         android:fontFamily="@font/lato"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -357,13 +358,13 @@
 
                     <TextView
                         android:id="@+id/tv_cuaca"
-                        android:layout_width="wrap_content"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         app:layout_constraintStart_toEndOf="@id/ic_weather"
                         app:layout_constraintTop_toBottomOf="@id/tv_suhu_cuaca"
                         android:text="Berawan"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:fontFamily="@font/lato"/>
 
                     <TextView
@@ -385,7 +386,7 @@
                         android:layout_marginTop="5dp"
                         app:layout_constraintTop_toBottomOf="@id/tv_lama_matahari"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:text="Kelembaban :"
+                        android:text="Kelembaban : "
                         android:textSize="16sp"
                         android:fontFamily="@font/lato"/>
 
@@ -397,7 +398,7 @@
                 android:id="@+id/sec4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="24dp"
                 android:text="Rekomendasi"
                 android:fontFamily="@font/lato"
                 android:textSize="22sp"

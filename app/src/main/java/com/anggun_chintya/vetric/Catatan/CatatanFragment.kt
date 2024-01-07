@@ -1,6 +1,8 @@
 package com.anggun_chintya.vetric.Catatan
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.anggun_chintya.vetric.MainActivity
 import com.anggun_chintya.vetric.R
+import com.anggun_chintya.vetric.databinding.EditCatatanBinding
 import com.anggun_chintya.vetric.databinding.FragmentCatatanBinding
 import com.anggun_chintya.vetric.databinding.TambahCatatanBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -46,37 +50,9 @@ class CatatanFragment : Fragment() {
         return binding.root
     }
 
-    private fun formTambah(){
-        customView = TambahCatatanBinding.inflate(layoutInflater)
-        customView.etInTgl.setOnClickListener {
-            tampilkanDatePicker()
-        }
-
-        val dialog = MaterialAlertDialogBuilder(requireContext())
-            .setView(customView.root)
-            .setPositiveButton("Simpan") { dialog, _ ->
-                var judul = customView.etInJudul.text.toString()
-                var biaya = customView.etInBiaya.text.toString().toDouble()
-
-                val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-
-                var tanggal = customView.etInTgl.text.toString()
-                val date = dateFormat.parse(tanggal)
-                Log.e("date",date.toString())
-
-                simpanDataCatatan(judul, biaya, date)
-            }
-            .setNegativeButton("Batal") { dialog, _ ->
-
-                dialog.dismiss()
-            }
-            .create()
-        dialog.show()
-    }
-
     private fun initRecyclerView() {
         binding.rvCatatan.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = LinearLayoutManager(context)
             catatanAdapter = RecyclerAdapter_Catatan()
             adapter = catatanAdapter
         }
@@ -91,8 +67,8 @@ class CatatanFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val listDataCatatan = mutableListOf<DataCatatan>()
 
-                for (elektronikSnapshot in dataSnapshot.children) {
-                    val catatan = elektronikSnapshot.getValue(DataCatatan::class.java)
+                for (catatanSnapshot in dataSnapshot.children) {
+                    val catatan = catatanSnapshot.getValue(DataCatatan::class.java)
                     if (catatan?.userID == userID) {
                         catatan?.let {
                             listDataCatatan.add(it)
@@ -120,6 +96,51 @@ class CatatanFragment : Fragment() {
         }
 
         databaseReference.addValueEventListener(valueEventListener)
+    }
+
+    private fun formTambah(){
+        customView = TambahCatatanBinding.inflate(layoutInflater)
+        customView.etInTgl.setOnClickListener {
+            tampilkanDatePicker()
+        }
+
+        val dialog = MaterialAlertDialogBuilder(requireContext())
+            .setView(customView.root)
+            .setPositiveButton("Simpan", null)  // Ganti null dengan listener kosong
+            .setNegativeButton("Batal") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+        dialog.show()
+
+        // Dapatkan button positif setelah dialog ditampilkan
+        val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+
+        // Atur listener untuk button positif
+        positiveButton.setOnClickListener {
+            val judul = customView.etInJudul.text.toString().trim()
+            val biayaStr = customView.etInBiaya.text.toString().trim()
+            val tanggal = customView.etInTgl.text.toString().trim()
+
+            if (judul.isEmpty() || biayaStr.isEmpty() || tanggal.isEmpty()) {
+                tampilkanAlertDialog("Inputan tidak boleh kosong.")
+//                Toast.makeText(requireContext(), "Inputan tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else {
+                try {
+                    val biaya = biayaStr.toDouble()
+
+                    val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                    val date = dateFormat.parse(tanggal)
+                    Log.e("date", date.toString())
+
+                    simpanDataCatatan(judul, biaya, date)
+                    dialog.dismiss()  // Tutup dialog setelah sukses
+                } catch (e: NumberFormatException) {
+                    // Tampilkan toast jika input biaya tidak valid
+                    Toast.makeText(requireContext(), "Input biaya tidak valid", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun simpanDataCatatan(judul:String, biaya:Double, date:Date){
@@ -172,5 +193,15 @@ class CatatanFragment : Fragment() {
         )
 
         datePickerDialog.show()
+    }
+
+    private fun tampilkanAlertDialog(message: String) {
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setTitle("Peringatan!")
+            .setMessage(message)
+            .setPositiveButton("OK", null)
+            .create()
+
+        alertDialog.show()
     }
 }

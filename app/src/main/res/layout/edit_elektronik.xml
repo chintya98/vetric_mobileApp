@@ -37,7 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_editElektonik"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -201,7 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Durasi"
+                    android:text="Durasi (jam per hari)"
                     android:fontFamily="@font/lato"
                     android:textSize="14sp"/>
 
@@ -219,7 +220,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Ulang"
+                    android:text="Jumlah Pemakaian Dalam 1 Minggu"
                     android:fontFamily="@font/lato"
                     android:textSize="14sp"/>
 
@@ -261,7 +262,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Penggunaan Daya"
+                    android:text="Penggunaan Daya (kWh)"
                     android:fontFamily="@font/lato"
                     android:textSize="14sp"/>
 
@@ -282,7 +283,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Biaya"
+                    android:text="Biaya (Rp)"
                     android:fontFamily="@font/lato"
                     android:textSize="14sp"/>
 
@@ -292,7 +293,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
                     android:textSize="16sp"
-                    android:inputType="none"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"

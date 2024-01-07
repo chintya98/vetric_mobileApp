@@ -1,4 +1,6 @@
 package com.anggun_chintya.vetric
+import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -33,25 +35,51 @@ class LoginActivity : AppCompatActivity() {
             setContentView(binding.root)
 
             binding.btnMasuk.setOnClickListener{
+                val progressBar = ProgressDialog(this)
+                progressBar.setMessage("Harap Menunggu...")
+                progressBar.show()
+
                 val email = binding.etLoginEmail.text.toString().trim()
                 val password = binding.etLoginPassword.text.toString()
-                auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            val user = auth.currentUser
-                            Log.e("disini",user?.email.toString())
-                            if (user != null) {
-                                // Start the MainActivity
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                        } else {
-                            // Login gagal
-                            Toast.makeText(this, "Login gagal", Toast.LENGTH_SHORT).show()
-                                Log.e("erroor","error login")
-                        }
+
+                if (email.isEmpty() || password.isEmpty() ) {
+                    tampilkanAlertDialog("Inputan tidak boleh kosong.")
+                }else{
+                    try{
+                        auth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val user = auth.currentUser
+                                    Log.e("disini",user?.email.toString())
+                                    if (user != null) {
+                                        // Start the MainActivity
+                                        val intent = Intent(this, MainActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        // Login gagal
+                                        Toast.makeText(this, "Login gagal", Toast.LENGTH_SHORT).show()
+                                        Log.e("erroor","error login")
+                                    }
+                                }
+                            }
+                    }catch (e: NumberFormatException) {
+                        // Tampilkan toast jika input biaya tidak valid
+                        Toast.makeText(this, "Input biaya tidak valid", Toast.LENGTH_SHORT).show()
                     }
+                }
+                progressBar.dismiss()
             }
         }
     }
-}}
+
+    private fun tampilkanAlertDialog(message: String) {
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("Peringatan!")
+            .setMessage(message)
+            .setPositiveButton("OK", null)
+            .create()
+
+        alertDialog.show()
+    }
+}

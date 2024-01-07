@@ -4,59 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".BerandaFragment">
+    android:paddingTop="20dp"
+    android:paddingHorizontal="20dp"
+    tools:context=".ProfilFragment">
 
     <TextView
         android:id="@+id/tv_judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="300dp"
+        android:text="Elektronik"
         android:fontFamily="@font/lato"
-        android:text="Profil"
+        android:textStyle="bold"
         android:textColor="@color/primary"
-        android:textSize="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="35dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/id_profil"
         app:civ_border_color="@color/primary"
         app:civ_border_width="2dp"
-        app:layout_constraintEnd_toEndOf="@id/tv_judul"
-        app:layout_constraintStart_toStartOf="@id/tv_judul"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_judul" />
-
 
     <TextView
         android:id="@+id/tv_username"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/lato"
         android:text="Username"
         android:textColor="@color/gray"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/profileImageView"
-        app:layout_constraintTop_toTopOf="@id/profileImageView" />
+        app:layout_constraintTop_toTopOf="@id/profileImageView"
+        app:layout_constraintBottom_toBottomOf="@id/profileImageView"/>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/tx_username"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginStart="40dp"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@id/tv_username"
-        app:layout_constraintStart_toStartOf="@id/tv_username"
+        android:layout_marginStart="20dp"
+        android:inputType="none"
+        android:clickable="false"
+        android:focusable="false"
+        android:textColor="@color/black15"
+        app:layout_constraintStart_toEndOf="@id/profileImageView"
         app:layout_constraintTop_toBottomOf="@id/tv_username" />
 
     <TextView
@@ -67,7 +64,7 @@
         android:fontFamily="@font/lato"
         android:text="Email"
         android:textColor="@color/gray"
-        android:textSize="16dp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/tv_judul"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tv_judul"
@@ -82,8 +79,9 @@
         app:layout_constraintEnd_toEndOf="@id/tv_email"
         app:layout_constraintStart_toStartOf="@id/tv_email"
         app:layout_constraintTop_toBottomOf="@id/tv_email"
-        app:hintEnabled="false"
+        android:textColor="@color/black15"
         android:inputType="none"
+        android:clickable="false"
         android:focusable="false" />
 
     <TextView
@@ -94,7 +92,7 @@
         android:fontFamily="@font/lato"
         android:text="Jenis Layanan Listrik"
         android:textColor="@color/gray"
-        android:textSize="16dp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@id/tv_email"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tv_email"
@@ -106,36 +104,39 @@
         android:layout_height="40dp"
         android:layout_marginStart="165dp"
         android:fontFamily="@font/lato"
+        android:inputType="none"
+        android:clickable="false"
+        android:focusable="false"
         app:layout_constraintEnd_toEndOf="@id/tv_email"
         app:layout_constraintStart_toStartOf="@id/tv_jenis_lyn"
         app:layout_constraintTop_toBottomOf="@id/tv_jenis_lyn" />
 
     <TextView
         android:id="@+id/tv_keterangan"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/lato"
         android:text="@string/keterangan"
         android:textColor="@color/gray"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="@id/tv_jenis_lyn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/tv_jenis_lyn"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_jenis_lyn" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logout"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginRight="0dp"
         android:fontFamily="@font/lato"
         android:text="Keluar"
-        app:layout_constraintEnd_toEndOf="@id/tv_keterangan"
-        app:layout_constraintStart_toStartOf="@id/tv_keterangan"
+        android:textSize="16sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_keterangan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
