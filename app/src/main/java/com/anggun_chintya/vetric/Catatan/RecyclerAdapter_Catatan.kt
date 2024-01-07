@@ -18,6 +18,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -60,8 +61,12 @@ class RecyclerAdapter_Catatan : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         var card : MaterialCardView = binding.itemCatatan
 
         fun bind (dataCatatan: DataCatatan){
+            val decimalFormat = DecimalFormat("#,##0.00")
+
             judul.text = dataCatatan.judul
-            biaya.text = dataCatatan.pengeluaran.toString()
+
+            var str_pengeluaran = decimalFormat.format(dataCatatan.pengeluaran)
+            biaya.text = "Rp " + str_pengeluaran
 
             val monthFormat = SimpleDateFormat("MMM", Locale.US)
             val formattedMonth = monthFormat.format(dataCatatan.tanggal)
