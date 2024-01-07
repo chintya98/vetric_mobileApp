@@ -1,7 +1,10 @@
 package com.anggun_chintya.vetric.Elektronik
 
+import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,15 +29,39 @@ class TambahElektronik : AppCompatActivity(){
 
         binding.tvTambah.setOnClickListener {
             // Mendapatkan nilai dari EditText
-            val kategori = binding.etInKategori.text.toString()
-            val nama = binding.etInNama.text.toString()
-            val tipe = binding.etInTipe.text.toString()
-            val daya = binding.etInDaya.text.toString().toDouble()
-            val jmlUnit = binding.etInUnit.text.toString().toInt()
-            val durasi = binding.etInDurasi.text.toString().toDouble()
-            val ulang = binding.etInUlang.text.toString().toInt()
+            val kategori = binding.etInKategori.text.toString().trim()
+            val nama = binding.etInNama.text.toString().trim()
+            val tipe = binding.etInTipe.text.toString().trim()
+            val dayaStr = binding.etInDaya.text.toString().trim()
+            val jmlUnitStr = binding.etInUnit.text.toString().trim()
+            val durasiStr = binding.etInDurasi.text.toString().trim()
+            val ulangStr = binding.etInUlang.text.toString().trim()
 
-            simpanDataElektronik(kategori, nama, tipe, daya,jmlUnit, durasi, ulang)
+            if (kategori.isEmpty() || nama.isEmpty() || tipe.isEmpty() || dayaStr.isEmpty() || jmlUnitStr.isEmpty() || durasiStr.isEmpty() || ulangStr.isEmpty()) {
+                // Tampilkan AlertDialog jika ada input yang kosong
+                tampilkanAlertDialog("Inputan tidak boleh kosong.")
+            } else if(ulangStr.toInt()<1 || ulangStr.toInt()>7) {
+                tampilkanAlertDialog("Inputkan jumlah pemakaian yang valid dalam 1 minggu (nilai 1 s/d 7)")
+                Log.e("disinierror",ulangStr)
+            }else {
+                try {
+                    val progressBar = ProgressDialog(this)
+                    progressBar.setMessage("Menambah Data...")
+                    progressBar.show()
+
+                    val daya = dayaStr.toDouble()
+                    val jmlUnit = jmlUnitStr.toInt()
+                    val durasi = durasiStr.toDouble()
+                    val ulang = ulangStr.toInt()
+
+                    // Panggil fungsi simpanDataElektronik jika input valid
+                    simpanDataElektronik(kategori, nama, tipe, daya, jmlUnit, durasi, ulang)
+                    progressBar.dismiss()
+                } catch (e: NumberFormatException) {
+                    // Tampilkan AlertDialog jika input tidak valid
+                    tampilkanAlertDialog("Format input tidak valid.")
+                }
+            }
         }
 
         binding.etInKategori.setOnClickListener {
@@ -63,14 +90,10 @@ class TambahElektronik : AppCompatActivity(){
             newId?.let { DataElektronik(it,kategori,nama,tipe,daya,jmlUnit,durasi,ulang,userID) }
         val elektronikRef = databaseReference.child("elektronik")
 
-        val progressbar = binding.progressbar
-        progressbar.visibility = View.VISIBLE
-
         // Menyimpan data ke Firebase
         elektronikRef.child(newId ?: "").setValue(dataElektronik)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    progressbar.visibility = View.INVISIBLE
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("openFragment", "ElektronikFragment") // Anda dapat mengirimkan data lain jika diperlukan
                     startActivity(intent)
@@ -108,6 +131,15 @@ class TambahElektronik : AppCompatActivity(){
 
                 // Tentukan indeks kategori yang dipilih (default: 0)
                 var selectedCategoryIndex = 0
+
+                // Cek apakah ada kategori yang terakhir dipilih (misalnya dari SharedPreferences)
+                val lastSelectedCategory = binding.etInKategori.text.toString() // Ganti dengan key yang sesuai
+                val lastSelectedIndex = kategoriList.indexOfFirst { it.kategori == lastSelectedCategory }
+
+                if (lastSelectedIndex != -1) {
+                    // Kategori terakhir ditemukan, set selectedCategoryIndex ke indeks tersebut
+                    selectedCategoryIndex = lastSelectedIndex
+                }
 
                 // Set up radio button dengan pilihan kategori
                 dialogBuilder.setSingleChoiceItems(
@@ -183,6 +215,14 @@ class TambahElektronik : AppCompatActivity(){
                 // Tentukan indeks kategori yang dipilih (default: 0)
                 var selectedCategoryIndex = 0
 
+
+                val lastSelectedType = binding.etInTipe.text.toString() // Ganti dengan key yang sesuai
+                val lastSelectedIndex = tipeList.indexOfFirst { it.tipe == lastSelectedType }
+
+                if (lastSelectedIndex != -1) {
+                    selectedCategoryIndex = lastSelectedIndex
+                }
+
                 // Set up radio button dengan pilihan kategori
                 dialogBuilder.setSingleChoiceItems(
                     tipeNames,
@@ -218,5 +258,15 @@ class TambahElektronik : AppCompatActivity(){
                 // ...
             }
         })
+    }
+
+    private fun tampilkanAlertDialog(message: String) {
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("Peringatan")
+            .setMessage(message)
+            .setPositiveButton("OK", null)
+            .create()
+
+        alertDialog.show()
     }
 }

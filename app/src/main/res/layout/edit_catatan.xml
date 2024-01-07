@@ -59,4 +59,18 @@
         android:textSize="16sp"
         android:inputType="number"/>
 
+    <TextView
+        android:id="@+id/hapus_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Hapus Catatan"
+        android:fontFamily="@font/lato"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:clickable="true"
+        android:focusable="true"
+        android:textAlignment="center"/>
+
 </LinearLayout>

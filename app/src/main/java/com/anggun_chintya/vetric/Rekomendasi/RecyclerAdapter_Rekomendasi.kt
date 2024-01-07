@@ -39,10 +39,12 @@ class RecyclerAdapter_Rekomendasi : RecyclerView.Adapter<RecyclerView.ViewHolder
     class RekomendasiViewHolder constructor(val binding: ItemRekomendasiBinding):RecyclerView.ViewHolder(binding.root){
         val judul : TextView = binding.judul
         val desc : TextView = binding.desc
+        val nomor : TextView = binding.nomor
 
         fun bind (dataRekomendasi: DataRekomendasi){
             judul.text = dataRekomendasi.title
             desc.text = dataRekomendasi.desc
+            nomor.text = dataRekomendasi.nomor.toString()
         }
 
     }

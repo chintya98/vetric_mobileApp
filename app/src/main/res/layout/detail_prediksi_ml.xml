@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
         android:textSize="16sp"
-        android:inputType="text"/>
+        android:inputType="numberDecimal"/>
 
     <TextView
         android:id="@+id/tv_inCurahHujan"
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
         android:textSize="16sp"
-        android:inputType="text"/>
+        android:inputType="numberDecimal"/>
 
     <TextView
         android:id="@+id/tv_inSunshine"
@@ -79,7 +79,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:inputType="numberDecimal"/>
 
     <TextView
         android:id="@+id/tv_inKelembaban"
@@ -95,7 +96,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/tv_hasilPrediksi"
@@ -113,6 +115,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="false"/>
 
 </LinearLayout>

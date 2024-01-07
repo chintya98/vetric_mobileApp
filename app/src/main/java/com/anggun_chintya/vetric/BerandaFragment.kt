@@ -52,6 +52,7 @@ class BerandaFragment : Fragment() {
     private var sunshine=0.0
     private var kelembaban=0
     private var hasilPrediksi = 0.0
+    private var totalDaya=0.0
 
     val decimalFormat = DecimalFormat("#,##0.00")
 
@@ -62,8 +63,8 @@ class BerandaFragment : Fragment() {
         binding = FragmentBerandaBinding.inflate(layoutInflater)
 
         fetchWeatherData()
-        prediksiDaya_wCuaca(curahHujan, suhu, sunshine, kelembaban)
         tampilKalkulasi()
+        prediksiDaya_wCuaca(curahHujan, suhu, sunshine, kelembaban)
 
         binding.cardKonsumsiDayaCuaca.setOnClickListener {
             tampilDetailPrediksi()
@@ -79,7 +80,6 @@ class BerandaFragment : Fragment() {
         val auth= FirebaseAuth.getInstance()
         var userID = auth.currentUser?.uid
 
-        var totalDaya = 0.0;
         var totalBiaya = 0.0;
 
         val valueEventListener = object : ValueEventListener {
@@ -136,7 +136,7 @@ class BerandaFragment : Fragment() {
                     binding.tvDatetime.setText(getCurrentDate())
                     binding.tvCuaca.setText(kondisiCuaca)
                     binding.tvSuhuCuaca.setText(suhu.toString() + " °C")
-                    binding.tvLamaMatahari.setText("Lama Sinar Matahari: " + sunshine.toString())
+                    binding.tvLamaMatahari.setText("Lama Sinar Matahari: " + decimalFormat.format(sunshine))
                     binding.tvKelembaban.setText("Kelembaban: "+kelembaban.toString())
                     Log.d("SUHU","onResponse: $suhu")
                     Log.d("MATAHARI","onResponse: $sunshine")
@@ -169,7 +169,7 @@ class BerandaFragment : Fragment() {
         val currentDate: Date = calendar.time
 
         // Format tanggal sesuai dengan "EEEE-dd-MM-yyyy" (hari-tanggal-bulan-tahun)
-        val dateFormat = SimpleDateFormat("EEEE, dd-MM-yyyy", Locale.getDefault())
+        val dateFormat = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault())
         return dateFormat.format(currentDate)
     }
 
@@ -188,6 +188,10 @@ class BerandaFragment : Fragment() {
 
                     var strPrediksi = decimalFormat.format(hasilPrediksi)
                     binding.vWKonsumsiDaya.setText(strPrediksi)
+
+                    var persentase = (totalDaya/hasilPrediksi)*100
+                    var strPersen = decimalFormat.format(persentase)
+                    binding.vPKonsumsiDaya.setText(strPersen)
 
                 } else { }
             }
@@ -238,7 +242,7 @@ class BerandaFragment : Fragment() {
 
     private fun initRecyclerView() {
         binding.rvCatatan.apply {
-            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
             rekomendasiAdapter = RecyclerAdapter_Rekomendasi()
             adapter = rekomendasiAdapter
         }
@@ -250,10 +254,12 @@ class BerandaFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val listDataRekomendasi = mutableListOf<DataRekomendasi>()
 
+                var index=0
                 for (rekomendasiSnapshot in dataSnapshot.children) {
                     val rekomendasi = rekomendasiSnapshot.getValue(DataRekomendasi::class.java)
 
                     if (rekomendasi != null) {
+                        rekomendasi.nomor = ++index
                         listDataRekomendasi.add(rekomendasi)
                     }
                 }

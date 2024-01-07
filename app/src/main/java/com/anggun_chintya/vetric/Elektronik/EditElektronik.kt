@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.DecimalFormat
 
 class EditElektronik : AppCompatActivity() {
 
@@ -53,8 +54,23 @@ class EditElektronik : AppCompatActivity() {
 
     }
 
+    private fun getKategoriImageResId(kategori: String): Int {
+        return when (kategori) {
+            "Pendingin Udara" -> R.drawable.ac
+            "Kulkas" -> R.drawable.kulkas
+            "Televisi" -> R.drawable.tv
+            "Komputer" -> R.drawable.computer
+            "Penanak Nasi" -> R.drawable.penanaknasi
+            "Lampu" -> R.drawable.lampu
+            else -> R.drawable.ic_elec // Gambar default jika kategori tidak dikenali
+        }
+    }
+
     private fun tampilDetil(kategori:String, nama:String, tipe:String, daya:String,
                             jmlUnit:String, durasi:String, ulang:String){
+
+        val decimalFormat = DecimalFormat("#,##0.00")
+
         binding.etEdKategori.setText(kategori)
         binding.etEdNama.setText(nama)
         binding.etEdTipe.setText(tipe)
@@ -62,6 +78,15 @@ class EditElektronik : AppCompatActivity() {
         binding.etEdUnit.setText(jmlUnit)
         binding.etEdDurasi.setText(durasi)
         binding.etEdUlang.setText(ulang)
+
+        val biaya = (durasi.toDouble() * jmlUnit.toInt() * daya.toDouble() * ulang.toInt()*4)/1000 * 1352
+        binding.etBiaya.setText(decimalFormat.format(biaya))
+
+        val daya = (durasi.toDouble() * jmlUnit.toInt() * daya.toDouble() * ulang.toInt()*4)/1000
+        binding.etDaya.setText(decimalFormat.format(daya))
+
+        val kategoriImageResId = getKategoriImageResId(kategori)
+        binding.icElec.setImageResource(kategoriImageResId)
     }
 
     private fun updateData(id: String) {
@@ -155,6 +180,15 @@ class EditElektronik : AppCompatActivity() {
                 // Tentukan indeks kategori yang dipilih (default: 0)
                 var selectedCategoryIndex = 0
 
+                // Cek apakah ada kategori yang terakhir dipilih (misalnya dari SharedPreferences)
+                val lastSelectedCategory = binding.etEdKategori.text.toString() // Ganti dengan key yang sesuai
+                val lastSelectedIndex = kategoriList.indexOfFirst { it.kategori == lastSelectedCategory }
+
+                if (lastSelectedIndex != -1) {
+                    // Kategori terakhir ditemukan, set selectedCategoryIndex ke indeks tersebut
+                    selectedCategoryIndex = lastSelectedIndex
+                }
+
                 // Set up radio button dengan pilihan kategori
                 dialogBuilder.setSingleChoiceItems(
                     kategoriNames,
@@ -228,6 +262,13 @@ class EditElektronik : AppCompatActivity() {
 
                 // Tentukan indeks kategori yang dipilih (default: 0)
                 var selectedCategoryIndex = 0
+
+                val lastSelectedType = binding.etEdTipe.text.toString() // Ganti dengan key yang sesuai
+                val lastSelectedIndex = tipeList.indexOfFirst { it.tipe == lastSelectedType }
+
+                if (lastSelectedIndex != -1) {
+                    selectedCategoryIndex = lastSelectedIndex
+                }
 
                 // Set up radio button dengan pilihan kategori
                 dialogBuilder.setSingleChoiceItems(
